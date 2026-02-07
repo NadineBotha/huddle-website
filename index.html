@@ -187,46 +187,22 @@ background: rgba(0, 0, 0, 0.20);
 text-align: center;
 font-size: 36px;
 font-weight: 900;
-margin-bottom: 48px;
+margin-bottom: 32px;
 }
-.screenshot-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 32px;
-max-width: 1200px;
-margin: 0 auto;
-}
-.screenshot-item {
+.screenshots-coming-soon {
 text-align: center;
+padding: 80px 20px;
 }
-.screenshot-placeholder {
-background: rgba(255, 255, 255, 0.08);
-border: 2px solid rgba(255, 255, 255, 0.12);
-border-radius: 16px;
-aspect-ratio: 9 / 19.5;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-bottom: 16px;
-color: rgba(255, 255, 255, 0.40);
-font-size: 14px;
+.screenshots-coming-soon p {
+font-size: 24px;
+color: rgba(255, 255, 255, 0.60);
 font-weight: 700;
-}
-.screenshot-item img {
-width: 100%;
-height: auto;
-border-radius: 16px;
-border: 2px solid rgba(255, 255, 255, 0.12);
 margin-bottom: 16px;
 }
-.screenshot-item h4 {
-font-size: 18px;
-font-weight: 900;
-margin-bottom: 8px;
-}
-.screenshot-item p {
-color: rgba(255, 255, 255, 0.70);
-font-size: 14px;
+.screenshots-coming-soon small {
+font-size: 16px;
+color: rgba(255, 255, 255, 0.40);
+font-weight: 500;
 }
 /* Signup */
 .signup {
@@ -351,11 +327,14 @@ font-size: 28px;
 .signup-container {
 padding: 32px 24px;
 }
-.screenshot-grid {
-grid-template-columns: 1fr;
-}
 .mobile-menu.active {
 right: 16px;
+}
+.screenshots-coming-soon p {
+font-size: 20px;
+}
+.screenshots-coming-soon small {
+font-size: 14px;
 }
 }
 </style>
@@ -435,27 +414,9 @@ right: 16px;
 <section class="screenshots">
 <div class="container">
 <h3>See It In Action</h3>
-<div class="screenshot-grid">
-<div class="screenshot-item">
-<div class="screenshot-placeholder">Screenshot 1</div>
-<h4>Track Expenses</h4>
-<p>See who paid and who owes at a glance</p>
-</div>
-<div class="screenshot-item">
-<div class="screenshot-placeholder">Screenshot 2</div>
-<h4>Vote Together</h4>
-<p>Make group decisions without the back-and-forth</p>
-</div>
-<div class="screenshot-item">
-<div class="screenshot-placeholder">Screenshot 3</div>
-<h4>Plan Meals</h4>
-<p>Coordinate group dinners effortlessly</p>
-</div>
-<div class="screenshot-item">
-<div class="screenshot-placeholder">Screenshot 4</div>
-<h4>Coordinate Plans</h4>
-<p>Keep everyone on the same page</p>
-</div>
+<div class="screenshots-coming-soon">
+<p>📱 Screenshots Coming Soon!</p>
+<small>Follow us on 𝕏 <a href="https://x.com/GetHuddle" target="_blank" style="color: rgba(255, 255, 255, 0.60); text-decoration: underline;">@GetHuddle</a> for updates</small>
 </div>
 </div>
 </section>
