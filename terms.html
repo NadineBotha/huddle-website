@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Huddle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(180deg, #1A0B2E 0%, #231044 100%);
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        
+        /* Sticky Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: linear-gradient(180deg, #1A0B2E 0%, #231044 100%);
+            padding: 24px 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-header svg {
+            width: 48px;
+            height: 48px;
+        }
+        
+        .logo-header h1 {
+            font-size: 28px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.92);
+        }
+        
+        .back-link {
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: background 0.2s;
+        }
+        
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #8A2BE2;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            color: #8A2BE2;
+            margin-bottom: 10px;
+        }
+        
+        .last-updated {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        p, li {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #444;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        strong {
+            color: #333;
+        }
+        
+        a {
+            color: #8A2BE2;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 16px;
+            }
+            
+            .logo-header h1 {
+                font-size: 24px;
+            }
+            
+            .logo-header svg {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .back-link {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            body {
+                padding-bottom: 20px;
+            }
+            
+            .container {
+                margin: 20px 10px;
+                padding: 30px 20px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-header">
+                <svg width="48" height="48" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="312" y="248" width="120" height="528" rx="60" fill="#FFFFFF"/>
+                    <rect x="592" y="248" width="120" height="528" rx="60" fill="#FFFFFF"/>
+                    <rect x="392" y="462" width="240" height="100" rx="50" fill="#FFFFFF"/>
+                </svg>
+                <h1>Huddle</h1>
+            </a>
+            <a href="index.html" class="back-link">← Back</a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="page-header">
+            <h2 class="page-title">Terms of Service</h2>
+            <p class="last-updated">Last Updated: February 7, 2026</p>
+        </div>
+
+        <h2>1. Agreement to Terms</h2>
+        <p>By accessing or using the Huddle mobile application ("App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.</p>
+        <p>These Terms constitute a legally binding agreement between you and Compass Technologies Limited, a company registered in New Zealand ("we", "us", or "Company").</p>
+
+        <h2>2. Eligibility</h2>
+        <p>You must be at least <strong>16 years old</strong> to use Huddle. By using the App, you represent and warrant that you meet this age requirement.</p>
+
+        <h2>3. Description of Service</h2>
+        <p>Huddle is an event planning and coordination application that allows users to:</p>
+        <ul>
+            <li>Create and manage group events</li>
+            <li>Coordinate logistics (menus, expenses, activities, carpools, etc.)</li>
+            <li>Invite and communicate with event participants</li>
+            <li>Make group decisions through voting systems</li>
+            <li>Track and split expenses</li>
+        </ul>
+
+        <h2>4. User Accounts</h2>
+        
+        <h3>4.1 Registration</h3>
+        <p>To use Huddle, you must create an account by providing a valid phone number. You will receive a one-time password (OTP) via SMS to verify your phone number.</p>
+        
+        <h3>4.2 Account Security</h3>
+        <p>You are responsible for maintaining the confidentiality of your account and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account.</p>
+        
+        <h3>4.3 Accurate Information</h3>
+        <p>You agree to provide accurate, current, and complete information during registration and to update such information as necessary.</p>
+
+        <h2>5. Premium Features</h2>
+        
+        <h3>5.1 Free vs Premium</h3>
+        <p>Huddle offers both free and premium features. Premium features include:</p>
+        <ul>
+            <li>Expense settlement and tracking</li>
+            <li>Event group chat (Inbox)</li>
+            <li>Custom event background photos</li>
+        </ul>
+        
+        <h3>5.2 Pricing</h3>
+        <p>Premium features are available for <strong>NZ$4.99 per event</strong> (or equivalent in your local currency). Pricing is subject to change with notice.</p>
+        
+        <h3>5.3 Payment</h3>
+        <p>Premium purchases are processed through Apple App Store or Google Play Store in-app purchases. All payments are subject to the app store's terms and refund policies.</p>
+        
+        <h3>5.4 No Refunds</h3>
+        <p>All premium feature purchases are final and non-refundable, except as required by applicable law or the app store's refund policy.</p>
+
+        <h2>6. User Conduct</h2>
+        <p>You agree <strong>NOT</strong> to:</p>
+        <ul>
+            <li>Use the App for any illegal purpose or in violation of any laws</li>
+            <li>Harass, abuse, or harm other users</li>
+            <li>Upload or share content that is offensive, defamatory, or inappropriate</li>
+            <li>Attempt to gain unauthorized access to the App or other users' accounts</li>
+            <li>Use the App to send spam or unsolicited commercial messages</li>
+            <li>Impersonate any person or entity</li>
+            <li>Interfere with or disrupt the App's functionality</li>
+        </ul>
+
+        <h2>7. Content and Intellectual Property</h2>
+        
+        <h3>7.1 Your Content</h3>
+        <p>You retain ownership of any content you create or upload to Huddle (event details, messages, photos, etc.). By using the App, you grant us a limited license to store, display, and transmit your content as necessary to provide the service.</p>
+        <p><strong>You represent and warrant that:</strong></p>
+        <ul>
+            <li>You own or have the necessary rights to use and upload all content you submit to Huddle</li>
+            <li>Your content does not infringe on the intellectual property rights, privacy rights, or other rights of any third party</li>
+            <li>You have obtained all necessary permissions, licenses, or consents to upload and use any photos, images, or other content (including event background photos)</li>
+        </ul>
+        <p>You are solely responsible for all content you upload to Huddle. We are not liable for any claims related to content you submit.</p>
+        
+        <h3>7.2 Our Intellectual Property</h3>
+        <p>The App, including its design, code, features, and branding, is owned by Compass Technologies Limited and protected by intellectual property laws. You may not copy, modify, or reverse-engineer any part of the App.</p>
+
+        <h2>8. Event Data and Privacy</h2>
+        
+        <h3>8.1 Event Visibility</h3>
+        <p>Events you create are visible only to invited members. You control who can join your events.</p>
+        
+        <h3>8.2 Data Retention</h3>
+        <p>When you delete content or archive an event, we will remove or anonymize that data within a reasonable timeframe, except where retention is required by law.</p>
+        
+        <h3>8.3 Privacy Policy</h3>
+        <p>Your use of Huddle is also governed by our <a href="privacy.html">Privacy Policy</a>, which describes how we collect and use your information.</p>
+
+        <h2>9. Third-Party Services</h2>
+        <p>Huddle integrates with third-party services including:</p>
+        <ul>
+            <li><strong>Twilio</strong> (for SMS verification)</li>
+            <li><strong>Supabase</strong> (for data storage)</li>
+            <li><strong>PostHog</strong> (for app usage tracking and analytics)</li>
+            <li><strong>Payment processors</strong> (Apple/Google for in-app purchases)</li>
+        </ul>
+        <p>Your use of these services is subject to their respective terms and policies. We are not responsible for third-party services.</p>
+
+        <h2>10. Settlement and Payment Links</h2>
+        <p>Huddle provides deep links to external payment services (such as Venmo, Cash App, or bank apps) to facilitate settling expenses between users. <strong>We do not process, transmit, or hold any funds.</strong> All payment transactions occur outside of Huddle. We are not responsible for payment disputes or issues with external payment services.</p>
+
+        <h2>11. Disclaimers</h2>
+        
+        <h3>11.1 No Warranty</h3>
+        <p>Huddle is provided <strong>"as is"</strong> and <strong>"as available"</strong> without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+        
+        <h3>11.2 No Guarantee of Availability</h3>
+        <p>We do not guarantee that the App will be available at all times or that it will be error-free. We may suspend or terminate the service for maintenance or other reasons without notice.</p>
+
+        <h2>12. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, Compass Technologies Limited shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from:</p>
+        <ul>
+            <li>Your use or inability to use the App</li>
+            <li>Any unauthorized access to or use of our servers or your personal information</li>
+            <li>Any bugs, viruses, or other harmful code transmitted through the App</li>
+            <li>Any errors or omissions in content</li>
+            <li>Any user conduct or content</li>
+        </ul>
+        <p><strong>Our total liability to you for all claims arising from or related to the App shall not exceed the amount you paid us in the twelve (12) months prior to the event giving rise to liability, or NZ$100, whichever is greater.</strong></p>
+
+        <h2>13. Indemnification</h2>
+        <p>You agree to indemnify, defend, and hold harmless Compass Technologies Limited, its officers, directors, employees, and agents from any claims, liabilities, damages, losses, or expenses (including legal fees) arising from:</p>
+        <ul>
+            <li>Your use of the App</li>
+            <li>Your violation of these Terms</li>
+            <li>Your violation of any rights of another user or third party</li>
+            <li>Your content or conduct on the App</li>
+        </ul>
+
+        <h2>14. Termination</h2>
+        
+        <h3>14.1 By You</h3>
+        <p>You may stop using the App and delete your account at any time.</p>
+        
+        <h3>14.2 By Us</h3>
+        <p>We reserve the right to suspend or terminate your account at any time, with or without notice, for any reason, including if we believe you have violated these Terms.</p>
+        
+        <h3>14.3 Effect of Termination</h3>
+        <p>Upon termination, your right to use the App will immediately cease. Sections of these Terms that by their nature should survive termination (including disclaimers, limitations of liability, and indemnification) will remain in effect.</p>
+
+        <h2>15. Changes to Terms</h2>
+        <p>We may modify these Terms at any time. If we make material changes, we will notify you by:</p>
+        <ul>
+            <li>Displaying a prominent notice in the App</li>
+            <li>Sending you a push notification (if enabled on your device)</li>
+            <li>Posting the updated Terms in the App</li>
+        </ul>
+        <p>Your continued use of the App after changes become effective constitutes acceptance of the new Terms.</p>
+
+        <h2>16. Governing Law and Dispute Resolution</h2>
+        
+        <h3>16.1 Governing Law</h3>
+        <p>These Terms are governed by the laws of New Zealand, without regard to conflict of law principles.</p>
+        
+        <h3>16.2 Jurisdiction</h3>
+        <p>Any disputes arising from these Terms or your use of the App shall be subject to the exclusive jurisdiction of the courts of New Zealand.</p>
+        
+        <h3>16.3 Informal Resolution</h3>
+        <p>Before filing any formal dispute, you agree to first contact us at <a href="mailto:support@gethuddleapp.com">support@gethuddleapp.com</a> to attempt to resolve the issue informally.</p>
+
+        <h2>17. Miscellaneous</h2>
+        
+        <h3>17.1 Entire Agreement</h3>
+        <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and Compass Technologies Limited regarding the App.</p>
+        
+        <h3>17.2 Severability</h3>
+        <p>If any provision of these Terms is found to be unenforceable, the remaining provisions will remain in full force and effect.</p>
+        
+        <h3>17.3 Waiver</h3>
+        <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights.</p>
+        
+        <h3>17.4 Assignment</h3>
+        <p>You may not assign or transfer these Terms or your account without our prior written consent. We may assign these Terms without restriction.</p>
+
+        <h2>18. Contact Us</h2>
+        <p>If you have any questions about these Terms, please contact us:</p>
+        <p>
+            <strong>Compass Technologies Limited</strong><br>
+            PO Box 502<br>
+            Waikato Mail Centre<br>
+            Hamilton 3240<br>
+            New Zealand
+        </p>
+        <p>Email: <a href="mailto:support@gethuddleapp.com">support@gethuddleapp.com</a><br>
+        Website: <a href="index.html">gethuddleapp.com</a><br>
+        Contact Form: <a href="contact.html">Contact Us</a></p>
+    </div>
+</body>
+</html>

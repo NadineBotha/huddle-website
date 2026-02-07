@@ -1,481 +1,560 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Huddle - Organize Group Events Without the Chaos</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(180deg, #1A0B2E 0%, #231044 100%);
-            color: rgba(255, 255, 255, 0.92);
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Header */
-        header {
-            padding: 24px 0;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .logo-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-header svg {
-            width: 48px;
-            height: 48px;
-        }
-
-        .logo-header h1 {
-            font-size: 28px;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.92);
-        }
-
-        /* Hero */
-        .hero {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .hero-logo {
-            margin: 0 auto 32px;
-        }
-
-        .hero h2 {
-            font-size: 48px;
-            font-weight: 900;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.70);
-            margin-bottom: 32px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            background: #00D084;
-            color: #1A0B2E;
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: 900;
-            text-decoration: none;
-            display: inline-block;
-            border: 2px solid #00D084;
-            transition: all 0.2s;
-        }
-
-        .cta-button:hover {
-            background: #00E091;
-            transform: translateY(-2px);
-        }
-
-        /* Features */
-        .features {
-            padding: 60px 0;
-        }
-
-        .features h3 {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 900;
-            margin-bottom: 48px;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            padding: 32px;
-        }
-
-        .feature-card h4 {
-            font-size: 22px;
-            font-weight: 900;
-            margin-bottom: 12px;
-            color: #00D084;
-        }
-
-        .feature-card p {
-            color: rgba(255, 255, 255, 0.70);
-            font-size: 16px;
-        }
-
-        /* Screenshots */
-        .screenshots {
-            padding: 80px 0;
-            background: rgba(0, 0, 0, 0.20);
-        }
-
-        .screenshots h3 {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 900;
-            margin-bottom: 48px;
-        }
-
-        .screenshot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .screenshot-item {
-            text-align: center;
-        }
-
-        .screenshot-placeholder {
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            aspect-ratio: 9 / 19.5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-            color: rgba(255, 255, 255, 0.40);
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .screenshot-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.12);
-            margin-bottom: 16px;
-        }
-
-        .screenshot-item h4 {
-            font-size: 18px;
-            font-weight: 900;
-            margin-bottom: 8px;
-        }
-
-        .screenshot-item p {
-            color: rgba(255, 255, 255, 0.70);
-            font-size: 14px;
-        }
-
-        /* Signup */
-        .signup {
-            padding: 80px 0;
-        }
-
-        .signup-container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            padding: 40px;
-        }
-
-        .signup h3 {
-            font-size: 32px;
-            font-weight: 900;
-            margin-bottom: 16px;
-            text-align: center;
-        }
-
-        .signup p {
-            text-align: center;
-            color: rgba(255, 255, 255, 0.70);
-            margin-bottom: 32px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.08);
-            color: rgba(255, 255, 255, 0.92);
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .form-group input::placeholder {
-            color: rgba(255, 255, 255, 0.40);
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #00D084;
-        }
-
-        .submit-button {
-            width: 100%;
-            background: #00D084;
-            color: #1A0B2E;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: 900;
-            border: 2px solid #00D084;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .submit-button:hover {
-            background: #00E091;
-            transform: translateY(-2px);
-        }
-
-        .submit-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 16px;
-            background: rgba(0, 208, 132, 0.20);
-            border: 2px solid #00D084;
-            border-radius: 12px;
-            margin-top: 16px;
-            font-weight: 700;
-        }
-
-        .success-message.show {
-            display: block;
-        }
-
-        /* Footer */
-        footer {
-            padding: 40px 0;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.50);
-            border-top: 2px solid rgba(255, 255, 255, 0.12);
-        }
-
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 36px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-
-            .features h3, .screenshots h3 {
-                font-size: 28px;
-            }
-
-            .signup-container {
-                padding: 32px 24px;
-            }
-
-            .screenshot-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huddle - Organize Group Events Without the Chaos</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+background: linear-gradient(180deg, #1A0B2E 0%, #231044 100%);
+color: rgba(255, 255, 255, 0.92);
+min-height: 100vh;
+line-height: 1.6;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 24px;
+}
+/* Header */
+header {
+position: sticky;
+top: 0;
+z-index: 1000;
+background: linear-gradient(180deg, #1A0B2E 0%, #231044 100%);
+padding: 24px 0;
+border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+backdrop-filter: blur(10px);
+}
+.header-container {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.logo-header {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+.logo-header svg {
+width: 48px;
+height: 48px;
+}
+.logo-header h1 {
+font-size: 28px;
+font-weight: 900;
+color: rgba(255, 255, 255, 0.92);
+}
+/* Burger Menu */
+.burger-menu {
+cursor: pointer;
+padding: 8px;
+display: flex;
+flex-direction: column;
+gap: 6px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 8px;
+transition: background 0.2s;
+}
+.burger-menu:hover {
+background: rgba(255, 255, 255, 0.15);
+}
+.burger-line {
+width: 24px;
+height: 3px;
+background: rgba(255, 255, 255, 0.92);
+border-radius: 2px;
+transition: all 0.3s;
+}
+.burger-menu.active .burger-line:nth-child(1) {
+transform: rotate(45deg) translate(6px, 6px);
+}
+.burger-menu.active .burger-line:nth-child(2) {
+opacity: 0;
+}
+.burger-menu.active .burger-line:nth-child(3) {
+transform: rotate(-45deg) translate(6px, -6px);
+}
+/* Mobile Menu */
+.mobile-menu {
+position: fixed;
+top: 80px;
+right: -100%;
+width: 280px;
+background: linear-gradient(180deg, #1A0B2E 0%, #231044 100%);
+border: 2px solid rgba(255, 255, 255, 0.12);
+border-radius: 16px;
+padding: 20px;
+transition: right 0.3s ease;
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+.mobile-menu.active {
+right: 24px;
+}
+.mobile-menu a {
+display: block;
+padding: 16px;
+color: rgba(255, 255, 255, 0.92);
+text-decoration: none;
+font-weight: 600;
+border-radius: 8px;
+transition: background 0.2s;
+}
+.mobile-menu a:hover {
+background: rgba(255, 255, 255, 0.1);
+}
+/* Hero */
+.hero {
+padding: 80px 0;
+text-align: center;
+}
+.hero-logo {
+margin: 0 auto 32px;
+}
+.hero h2 {
+font-size: 48px;
+font-weight: 900;
+margin-bottom: 16px;
+line-height: 1.2;
+}
+.hero p {
+font-size: 20px;
+color: rgba(255, 255, 255, 0.70);
+margin-bottom: 32px;
+max-width: 600px;
+margin-left: auto;
+margin-right: auto;
+}
+.cta-button {
+background: #00D084;
+color: #1A0B2E;
+padding: 16px 32px;
+border-radius: 12px;
+font-size: 18px;
+font-weight: 900;
+text-decoration: none;
+display: inline-block;
+border: 2px solid #00D084;
+transition: all 0.2s;
+}
+.cta-button:hover {
+background: #00E091;
+transform: translateY(-2px);
+}
+/* Features */
+.features {
+padding: 60px 0;
+}
+.features h3 {
+text-align: center;
+font-size: 36px;
+font-weight: 900;
+margin-bottom: 48px;
+}
+.feature-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 32px;
+}
+.feature-card {
+background: rgba(255, 255, 255, 0.08);
+border: 2px solid rgba(255, 255, 255, 0.12);
+border-radius: 16px;
+padding: 32px;
+}
+.feature-card h4 {
+font-size: 22px;
+font-weight: 900;
+margin-bottom: 12px;
+color: #00D084;
+}
+.feature-card p {
+color: rgba(255, 255, 255, 0.70);
+font-size: 16px;
+}
+/* Screenshots */
+.screenshots {
+padding: 80px 0;
+background: rgba(0, 0, 0, 0.20);
+}
+.screenshots h3 {
+text-align: center;
+font-size: 36px;
+font-weight: 900;
+margin-bottom: 48px;
+}
+.screenshot-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 32px;
+max-width: 1200px;
+margin: 0 auto;
+}
+.screenshot-item {
+text-align: center;
+}
+.screenshot-placeholder {
+background: rgba(255, 255, 255, 0.08);
+border: 2px solid rgba(255, 255, 255, 0.12);
+border-radius: 16px;
+aspect-ratio: 9 / 19.5;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 16px;
+color: rgba(255, 255, 255, 0.40);
+font-size: 14px;
+font-weight: 700;
+}
+.screenshot-item img {
+width: 100%;
+height: auto;
+border-radius: 16px;
+border: 2px solid rgba(255, 255, 255, 0.12);
+margin-bottom: 16px;
+}
+.screenshot-item h4 {
+font-size: 18px;
+font-weight: 900;
+margin-bottom: 8px;
+}
+.screenshot-item p {
+color: rgba(255, 255, 255, 0.70);
+font-size: 14px;
+}
+/* Signup */
+.signup {
+padding: 80px 0;
+}
+.signup-container {
+max-width: 500px;
+margin: 0 auto;
+background: rgba(255, 255, 255, 0.08);
+border: 2px solid rgba(255, 255, 255, 0.12);
+border-radius: 16px;
+padding: 40px;
+}
+.signup h3 {
+font-size: 32px;
+font-weight: 900;
+margin-bottom: 16px;
+text-align: center;
+}
+.signup p {
+text-align: center;
+color: rgba(255, 255, 255, 0.70);
+margin-bottom: 32px;
+}
+.form-group {
+margin-bottom: 20px;
+}
+.form-group label {
+display: block;
+font-weight: 700;
+margin-bottom: 8px;
+font-size: 14px;
+}
+.form-group input {
+width: 100%;
+padding: 14px;
+border-radius: 12px;
+border: 2px solid rgba(255, 255, 255, 0.12);
+background: rgba(255, 255, 255, 0.08);
+color: rgba(255, 255, 255, 0.92);
+font-size: 16px;
+font-weight: 600;
+}
+.form-group input::placeholder {
+color: rgba(255, 255, 255, 0.40);
+}
+.form-group input:focus {
+outline: none;
+border-color: #00D084;
+}
+.submit-button {
+width: 100%;
+background: #00D084;
+color: #1A0B2E;
+padding: 16px;
+border-radius: 12px;
+font-size: 18px;
+font-weight: 900;
+border: 2px solid #00D084;
+cursor: pointer;
+transition: all 0.2s;
+}
+.submit-button:hover {
+background: #00E091;
+transform: translateY(-2px);
+}
+.submit-button:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+}
+.success-message {
+display: none;
+text-align: center;
+padding: 16px;
+background: rgba(0, 208, 132, 0.20);
+border: 2px solid #00D084;
+border-radius: 12px;
+margin-top: 16px;
+font-weight: 700;
+}
+.success-message.show {
+display: block;
+}
+/* Footer */
+footer {
+padding: 40px 0;
+text-align: center;
+color: rgba(255, 255, 255, 0.50);
+border-top: 2px solid rgba(255, 255, 255, 0.12);
+margin-top: 60px;
+}
+.footer-links {
+display: flex;
+gap: 16px;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+margin-bottom: 20px;
+}
+.footer-links a {
+color: rgba(255, 255, 255, 0.70);
+text-decoration: none;
+font-weight: 600;
+transition: color 0.2s;
+}
+.footer-links a:hover {
+color: rgba(255, 255, 255, 0.92);
+}
+.footer-links .separator {
+color: rgba(255, 255, 255, 0.30);
+}
+@media (max-width: 768px) {
+.hero h2 {
+font-size: 36px;
+}
+.hero p {
+font-size: 18px;
+}
+.features h3, .screenshots h3 {
+font-size: 28px;
+}
+.signup-container {
+padding: 32px 24px;
+}
+.screenshot-grid {
+grid-template-columns: 1fr;
+}
+.mobile-menu.active {
+right: 16px;
+}
+}
+</style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo-header">
-                <svg width="48" height="48" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="312" y="248" width="120" height="528" rx="60" fill="#FFFFFF"/>
-                    <rect x="592" y="248" width="120" height="528" rx="60" fill="#FFFFFF"/>
-                    <rect x="392" y="462" width="240" height="100" rx="50" fill="#FFFFFF"/>
-                </svg>
-                <h1>Huddle</h1>
-            </div>
-        </div>
-    </header>
+<header>
+<div class="container">
+<div class="header-container">
+<div class="logo-header">
+<svg width="48" height="48" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="312" y="248" width="120" height="528" rx="60" fill="#FFFFFF"/>
+<rect x="592" y="248" width="120" height="528" rx="60" fill="#FFFFFF"/>
+<rect x="392" y="462" width="240" height="100" rx="50" fill="#FFFFFF"/>
+</svg>
+<h1>Huddle</h1>
+</div>
+<div class="burger-menu" id="burgerMenu">
+<div class="burger-line"></div>
+<div class="burger-line"></div>
+<div class="burger-line"></div>
+</div>
+</div>
+</div>
+</header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <svg class="hero-logo" width="120" height="120" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="bg" x1="512" y1="0" x2="512" y2="1024" gradientUnits="userSpaceOnUse">
-                            <stop offset="0" stop-color="#1A0B2E"/>
-                            <stop offset="1" stop-color="#231044"/>
-                        </linearGradient>
-                    </defs>
-                    <rect width="1024" height="1024" rx="224" fill="url(#bg)"/>
-                    <rect x="312" y="248" width="120" height="528" rx="60" fill="#FFFFFF"/>
-                    <rect x="592" y="248" width="120" height="528" rx="60" fill="#FFFFFF"/>
-                    <rect x="392" y="462" width="240" height="100" rx="50" fill="#FFFFFF"/>
-                </svg>
-                <h2>Organize Group Events<br>Without the Chaos</h2>
-                <p>Split expenses, make decisions, and coordinate schedules—all in one place. No more endless group chats.</p>
-                <a href="#signup" class="cta-button">Join the Waitlist</a>
-            </div>
-        </section>
+<div class="mobile-menu" id="mobileMenu">
+<a href="faq.html">FAQ</a>
+<a href="terms.html">Terms of Service</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="contact.html">Contact Us</a>
+</div>
 
-        <section class="features">
-            <div class="container">
-                <h3>Everything Your Group Needs</h3>
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <h4>💰 Split Expenses</h4>
-                        <p>Track who paid for what and settle up easily. No more awkward money conversations or spreadsheet chaos.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h4>🗳️ Make Decisions</h4>
-                        <p>Vote on restaurants, dates, activities—anything. Single choice, multiple choice, ranked voting, or availability polls.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h4>🍽️ Plan Meals</h4>
-                        <p>Organize group dinners and coordinate who's bringing what. Keep everyone fed without the confusion.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h4>📱 One Shared Space</h4>
-                        <p>Everything your event needs lives in one place. No jumping between apps or losing track of details.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<main>
+<section class="hero">
+<div class="container">
+<svg class="hero-logo" width="120" height="120" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="bg" x1="512" y1="0" x2="512" y2="1024" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#1A0B2E"/>
+<stop offset="1" stop-color="#231044"/>
+</linearGradient>
+</defs>
+<rect width="1024" height="1024" rx="224" fill="url(#bg)"/>
+<rect x="312" y="248" width="120" height="528" rx="60" fill="#FFFFFF"/>
+<rect x="592" y="248" width="120" height="528" rx="60" fill="#FFFFFF"/>
+<rect x="392" y="462" width="240" height="100" rx="50" fill="#FFFFFF"/>
+</svg>
+<h2>Organize Group Events<br>Without the Chaos</h2>
+<p>Split expenses, make decisions, and coordinate schedules—all in one place. No more endless group chats.</p>
+<a href="#signup" class="cta-button">Join the Waitlist</a>
+</div>
+</section>
+<section class="features">
+<div class="container">
+<h3>Everything Your Group Needs</h3>
+<div class="feature-grid">
+<div class="feature-card">
+<h4>💰 Split Expenses</h4>
+<p>Track who paid for what and settle up easily. No more awkward money conversations or spreadsheet chaos.</p>
+</div>
+<div class="feature-card">
+<h4>🗳️ Make Decisions</h4>
+<p>Vote on restaurants, dates, activities—anything. Single choice, multiple choice, ranked voting, or availability polls.</p>
+</div>
+<div class="feature-card">
+<h4>🍽️ Plan Meals</h4>
+<p>Organize group dinners and coordinate who's bringing what. Keep everyone fed without the confusion.</p>
+</div>
+<div class="feature-card">
+<h4>📱 One Shared Space</h4>
+<p>Everything your event needs lives in one place. No jumping between apps or losing track of details.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="screenshots">
+<div class="container">
+<h3>See It In Action</h3>
+<div class="screenshot-grid">
+<div class="screenshot-item">
+<div class="screenshot-placeholder">Screenshot 1</div>
+<h4>Track Expenses</h4>
+<p>See who paid and who owes at a glance</p>
+</div>
+<div class="screenshot-item">
+<div class="screenshot-placeholder">Screenshot 2</div>
+<h4>Vote Together</h4>
+<p>Make group decisions without the back-and-forth</p>
+</div>
+<div class="screenshot-item">
+<div class="screenshot-placeholder">Screenshot 3</div>
+<h4>Plan Meals</h4>
+<p>Coordinate group dinners effortlessly</p>
+</div>
+<div class="screenshot-item">
+<div class="screenshot-placeholder">Screenshot 4</div>
+<h4>Coordinate Plans</h4>
+<p>Keep everyone on the same page</p>
+</div>
+</div>
+</div>
+</section>
+<section class="signup" id="signup">
+<div class="container">
+<div class="signup-container">
+<h3>Join the Beta Waitlist</h3>
+<p>Be among the first to try Huddle when we launch.</p>
+<form id="waitlist-form" action="https://formspree.io/f/xwvqeele" method="POST">
+<div class="form-group">
+<label for="name">Name</label>
+<input type="text" id="name" name="name" placeholder="Your name" required>
+</div>
+<div class="form-group">
+<label for="email">Email</label>
+<input type="email" id="email" name="email" placeholder="your@email.com" required>
+</div>
+<div class="form-group">
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" required>
+</div>
+<button type="submit" class="submit-button">Join Waitlist</button>
+</form>
+<div class="success-message" id="success-message">
+✓ You're on the list! We'll be in touch soon.
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container">
+<div class="footer-links">
+<a href="faq.html">FAQ</a>
+<span class="separator">|</span>
+<a href="terms.html">Terms of Service</a>
+<span class="separator">|</span>
+<a href="privacy.html">Privacy Policy</a>
+<span class="separator">|</span>
+<a href="contact.html">Contact Us</a>
+</div>
+<p>© 2026 Huddle. All rights reserved.</p>
+</div>
+</footer>
+<script>
+// Burger menu toggle
+const burgerMenu = document.getElementById('burgerMenu');
+const mobileMenu = document.getElementById('mobileMenu');
 
-        <section class="screenshots">
-            <div class="container">
-                <h3>See It In Action</h3>
-                <div class="screenshot-grid">
-                    <div class="screenshot-item">
-                        <div class="screenshot-placeholder">Screenshot 1</div>
-                        <h4>Track Expenses</h4>
-                        <p>See who paid and who owes at a glance</p>
-                    </div>
-                    <div class="screenshot-item">
-                        <div class="screenshot-placeholder">Screenshot 2</div>
-                        <h4>Vote Together</h4>
-                        <p>Make group decisions without the back-and-forth</p>
-                    </div>
-                    <div class="screenshot-item">
-                        <div class="screenshot-placeholder">Screenshot 3</div>
-                        <h4>Plan Meals</h4>
-                        <p>Coordinate group dinners effortlessly</p>
-                    </div>
-                    <div class="screenshot-item">
-                        <div class="screenshot-placeholder">Screenshot 4</div>
-                        <h4>Coordinate Plans</h4>
-                        <p>Keep everyone on the same page</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+burgerMenu.addEventListener('click', () => {
+burgerMenu.classList.toggle('active');
+mobileMenu.classList.toggle('active');
+});
 
-        <section class="signup" id="signup">
-            <div class="container">
-                <div class="signup-container">
-                    <h3>Join the Beta Waitlist</h3>
-                    <p>Be among the first to try Huddle when we launch.</p>
-                    <form id="waitlist-form" action="https://formspree.io/f/xwvqeele" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" required>
-                        </div>
-                        <button type="submit" class="submit-button">Join Waitlist</button>
-                    </form>
-                    <div class="success-message" id="success-message">
-                        ✓ You're on the list! We'll be in touch soon.
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+if (!burgerMenu.contains(e.target) && !mobileMenu.contains(e.target)) {
+burgerMenu.classList.remove('active');
+mobileMenu.classList.remove('active');
+}
+});
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Huddle. All rights reserved.</p>
-        </div>
-    </footer>
+// Waitlist form
+const form = document.getElementById('waitlist-form');
+const successMessage = document.getElementById('success-message');
+form.addEventListener('submit', async (e) => {
+e.preventDefault();
 
-    <script>
-        const form = document.getElementById('waitlist-form');
-        const successMessage = document.getElementById('success-message');
+const submitButton = form.querySelector('.submit-button');
+submitButton.disabled = true;
+submitButton.textContent = 'Joining...';
+const formData = new FormData(form);
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const submitButton = form.querySelector('.submit-button');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Joining...';
+try {
+const response = await fetch(form.action, {
+method: 'POST',
+body: formData,
+headers: {
+'Accept': 'application/json'
+}
+});
+if (response.ok) {
+form.reset();
+successMessage.classList.add('show');
+submitButton.textContent = 'Joined!';
 
-            const formData = new FormData(form);
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    form.reset();
-                    successMessage.classList.add('show');
-                    submitButton.textContent = 'Joined!';
-                    
-                    setTimeout(() => {
-                        successMessage.classList.remove('show');
-                        submitButton.disabled = false;
-                        submitButton.textContent = 'Join Waitlist';
-                    }, 5000);
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (error) {
-                alert('Something went wrong. Please try again.');
-                submitButton.disabled = false;
-                submitButton.textContent = 'Join Waitlist';
-            }
-        });
-    </script>
+setTimeout(() => {
+successMessage.classList.remove('show');
+submitButton.disabled = false;
+submitButton.textContent = 'Join Waitlist';
+}, 5000);
+} else {
+throw new Error('Form submission failed');
+}
+} catch (error) {
+alert('Something went wrong. Please try again.');
+submitButton.disabled = false;
+submitButton.textContent = 'Join Waitlist';
+}
+});
+</script>
 </body>
 </html>

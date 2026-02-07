@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Huddle | Group Event Planning Made Easy</title>
+    <meta name="description" content="Frequently asked questions about Huddle - the group event planning app. Learn about pricing, features, privacy, and more.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: linear-gradient(180deg, #1A0B2E 0%, #231044 100%);
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        
+        /* Sticky Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: linear-gradient(180deg, #1A0B2E 0%, #231044 100%);
+            padding: 24px 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-header svg {
+            width: 48px;
+            height: 48px;
+        }
+        
+        .logo-header h1 {
+            font-size: 28px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.92);
+        }
+        
+        .back-link {
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: background 0.2s;
+        }
+        
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .page-header h2 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+        
+        .faq-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .faq-section h3 {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .faq-item {
+            margin-bottom: 25px;
+        }
+        
+        .faq-item h4 {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 8px;
+        }
+        
+        .faq-item p, .faq-item ul {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+        }
+        
+        .faq-item ul {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
+        
+        .faq-item li {
+            margin-bottom: 0.25rem;
+        }
+        
+        .faq-item a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        .faq-item a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .cta-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-box h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        
+        .cta-box p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .cta-box a {
+            color: white;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 16px;
+            }
+            
+            .logo-header h1 {
+                font-size: 24px;
+            }
+            
+            .logo-header svg {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .back-link {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            .container {
+                padding: 0 16px;
+            }
+            
+            .page-header {
+                margin: 40px 0 30px;
+            }
+            
+            .page-header h2 {
+                font-size: 2rem;
+            }
+            
+            .faq-section {
+                padding: 20px;
+            }
+            
+            .cta-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-header">
+                <svg width="48" height="48" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="312" y="248" width="120" height="528" rx="60" fill="#FFFFFF"/>
+                    <rect x="592" y="248" width="120" height="528" rx="60" fill="#FFFFFF"/>
+                    <rect x="392" y="462" width="240" height="100" rx="50" fill="#FFFFFF"/>
+                </svg>
+                <h1>Huddle</h1>
+            </a>
+            <a href="index.html" class="back-link">← Back</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h2>Got Questions? We've Got Answers.</h2>
+            <p class="subtitle">Everything you need to know about Huddle.</p>
+        </div>
+
+        <!-- General -->
+        <div class="faq-section">
+            <h3>General</h3>
+            
+            <div class="faq-item">
+                <h4>What is Huddle?</h4>
+                <p>Huddle is a mobile app for planning and coordinating group events. Whether you're organizing a weekend trip, potluck dinner, or family reunion, Huddle brings all your planning into one place — menu coordination, expense splitting, voting, and more.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Who is Huddle for?</h4>
+                <p>Anyone who organizes events with friends, family, or groups. Perfect for weekend trips, potlucks, camping, beach days, holiday gatherings, bachelor/bachelorette parties, and any event with 3 or more people.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>What platforms does Huddle support?</h4>
+                <p>Huddle is available on both iOS (iPhone) and Android. Download from the App Store or Google Play.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Do I need an account?</h4>
+                <p>Yes. You'll need to verify your phone number to create an account. This takes less than 30 seconds.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Is my data private?</h4>
+                <p>Absolutely. Your events are only visible to people you invite. We don't sell your data, show ads, or share your information with third parties. See our <a href="/privacy.html">Privacy Policy</a> for details.</p>
+            </div>
+        </div>
+
+        <!-- Pricing -->
+        <div class="faq-section">
+            <h3>Pricing</h3>
+            
+            <div class="faq-item">
+                <h4>How much does Huddle cost?</h4>
+                <p>Core features are <strong>free forever</strong>. This includes menu planning, voting, bring lists, activity planning, carpool coordination, guest management, and updates.</p>
+                <p>Premium features cost <strong>$4.99 NZD per event</strong> (or equivalent in your local currency). Premium adds expense tracking, group chat, route maps, and custom event photos.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>What's included for free?</h4>
+                <ul>
+                    <li>Menu planning with allergy warnings</li>
+                    <li>Democratic voting (dates, locations, activities)</li>
+                    <li>Bring list coordination</li>
+                    <li>Activity planning</li>
+                    <li>Carpool coordination (route maps in Premium)</li>
+                    <li>Group to-do lists</li>
+                    <li>Personal packing lists</li>
+                    <li>Guest management</li>
+                    <li>Automatic updates feed</li>
+                </ul>
+            </div>
+            
+            <div class="faq-item">
+                <h4>What's included in Premium?</h4>
+                <ul>
+                    <li><strong>Expense tracking</strong> - split evenly or by who ordered what</li>
+                    <li><strong>Automatic settlement</strong> calculations</li>
+                    <li><strong>One-tap payment links</strong></li>
+                    <li><strong>Group chat</strong> for real-time messaging</li>
+                    <li><strong>Route maps</strong> for carpool coordination</li>
+                    <li><strong>Custom event photos</strong> for backgrounds</li>
+                </ul>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Is Premium a subscription?</h4>
+                <p>No! Premium is a one-time unlock per event. Pay $4.99 once, and that event has Premium features forever. Most events work great with just the free features.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Can I try Premium for free?</h4>
+                <p>Not currently, but we may add a trial period in the future. Since Premium is only $4.99 per event (not per month), we wanted to keep pricing simple.</p>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="faq-section">
+            <h3>Features</h3>
+            
+            <div class="faq-item">
+                <h4>How does menu planning work?</h4>
+                <p>Add dishes to your event menu, tag them with meal types (breakfast, lunch, dinner, snacks), list ingredients, and mark allergens. Members can claim dishes so nothing gets duplicated. Built-in allergy warnings alert members about potential conflicts.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>How does voting work?</h4>
+                <p>Create a vote for dates, locations, activities, or anything else. Choose single choice (radio), multiple choice (checkbox), or ranked voting (Borda count). Optionally set a closing time for automatic results. Members vote, and results are calculated automatically.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>How do expenses work? (Premium)</h4>
+                <p>Track who paid for what and split costs evenly or by who ordered what. Huddle calculates who owes whom, minimizes the number of transfers, and provides one-tap payment links to popular apps.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>What is household-based splitting?</h4>
+                <p>Many couples and families share money. Huddle lets you split expenses by household instead of individual, so you don't end up with awkward $2.47 transfers between partners.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>How do carpools work?</h4>
+                <p>Post ride offers with departure location, available seats, and departure time. Riders can request pickups with their location. Premium users can view routes on a map to coordinate efficiently.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Can I use Huddle offline?</h4>
+                <p>You can view existing event data offline, but you need an internet connection to sync changes or receive updates from other members.</p>
+            </div>
+        </div>
+
+        <!-- Invites & Members -->
+        <div class="faq-section">
+            <h3>Invites & Members</h3>
+            
+            <div class="faq-item">
+                <h4>How do I invite people?</h4>
+                <p>Share an invite link via text, email, or any messaging app. Or enter phone numbers directly in the app. Invitees will receive a notification to join.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Do invitees need Huddle installed?</h4>
+                <p>Yes. They'll need to download the app and create an account to join your event.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Can I remove someone from an event?</h4>
+                <p>Yes. Event organisers can remove members from the guest list at any time.</p>
+            </div>
+        </div>
+
+        <!-- Account & Privacy -->
+        <div class="faq-section">
+            <h3>Account & Privacy</h3>
+            
+            <div class="faq-item">
+                <h4>How do I delete my account?</h4>
+                <p>Go to <strong>Settings &gt; Delete Account</strong> in the app. All your data will be permanently removed. This cannot be undone.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Do you sell my data?</h4>
+                <p>Never. We don't sell, rent, or share your personal information with third parties for marketing purposes. See our <a href="/privacy.html">Privacy Policy</a> for full details.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>What data do you collect?</h4>
+                <p>We collect only what's necessary to provide the service: phone number (for authentication), name, events you create or join, and event-related content (messages, expenses, votes, etc). See our <a href="/privacy.html">Privacy Policy</a> for complete details.</p>
+            </div>
+        </div>
+
+        <!-- Technical -->
+        <div class="faq-section">
+            <h3>Technical</h3>
+            
+            <div class="faq-item">
+                <h4>What are the system requirements?</h4>
+                <ul>
+                    <li><strong>iOS:</strong> iPhone running iOS 13.0 or later</li>
+                    <li><strong>Android:</strong> Android 6.0 or later</li>
+                </ul>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Is Huddle available in my country?</h4>
+                <p>Yes! Huddle works worldwide. The app is available in all countries where the App Store and Google Play operate.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>I found a bug. How do I report it?</h4>
+                <p>Email us at <a href="mailto:support@gethuddleapp.com">support@gethuddleapp.com</a> with details about what happened, what you expected, and what device you're using. Include screenshots if possible. We fix bugs quickly!</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Can I suggest a feature?</h4>
+                <p>Absolutely! Email <a href="mailto:support@gethuddleapp.com">support@gethuddleapp.com</a> with your idea. We read every suggestion and prioritize based on user feedback.</p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h3>Still Have Questions?</h3>
+            <p><strong>Email us:</strong> <a href="mailto:support@gethuddleapp.com">support@gethuddleapp.com</a></p>
+            <p><strong>Response time:</strong> 3-5 business days</p>
+            <p style="margin-top: 1rem;">We're a small team and we read every message. Don't hesitate to reach out!</p>
+        </div>
+    </div>
+</body>
+</html>
