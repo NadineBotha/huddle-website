@@ -240,7 +240,7 @@
         </ul>
         
         <h3>5.2 Pricing</h3>
-        <p>Premium features are available for <strong>NZ$4.99 per event</strong> (or equivalent in your local currency). Pricing is subject to change with notice.</p>
+        <p>Premium features are available for <strong><span id="pricing">$3.99 USD per event</span></strong>. Pricing is subject to change with notice.</p>
         
         <h3>5.3 Payment</h3>
         <p>Premium purchases are processed through Apple App Store or Google Play Store in-app purchases. All payments are subject to the app store's terms and refund policies.</p>
@@ -385,5 +385,25 @@
         Website: <a href="index.html">gethuddleapp.com</a><br>
         Contact Form: <a href="contact.html">Contact Us</a></p>
     </div>
+
+    <script>
+    // Detect if user is in New Zealand and show appropriate pricing
+    function detectLocationAndSetPrice() {
+        const pricingElement = document.getElementById('pricing');
+        
+        // Try to detect timezone
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        
+        // Check if timezone indicates New Zealand
+        if (timezone && (timezone.includes('Auckland') || timezone.includes('Wellington') || timezone.includes('Chatham'))) {
+            pricingElement.textContent = '$4.99 NZD per event';
+        } else {
+            pricingElement.textContent = '$3.99 USD per event';
+        }
+    }
+
+    // Run on page load
+    detectLocationAndSetPrice();
+    </script>
 </body>
 </html>
