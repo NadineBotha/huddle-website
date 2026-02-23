@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huddle - Features</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, #1A0B2E 0%, #231044 100%);
+      color: rgba(255, 255, 255, 0.92);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: linear-gradient(180deg, #1A0B2E 0%, #231044 100%);
+      padding: 24px 0;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .logo-header svg {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 auto;
+    }
+
+    .logo-header h1 {
+      font-size: 28px;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    /* Burger Menu */
+    .burger-menu {
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .burger-menu:hover { background: rgba(255, 255, 255, 0.15); }
+
+    .burger-line {
+      width: 24px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .burger-menu.active .burger-line:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .burger-menu.active .burger-line:nth-child(2) { opacity: 0; }
+
+    .burger-menu.active .burger-line:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 80px;
+      right: -100%;
+      width: 280px;
+      background: linear-gradient(180deg, #1A0B2E 0%, #231044 100%);
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 20px;
+      transition: right 0.3s ease;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-menu.active { right: 24px; }
+
+    .mobile-menu a {
+      display: block;
+      padding: 16px;
+      color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .mobile-menu a:hover { background: rgba(255, 255, 255, 0.1); }
+
+    /* Page hero */
+    .page-hero {
+      padding: 60px 0 36px;
+      text-align: center;
+    }
+
+    .page-hero h2 {
+      font-size: 44px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .page-hero p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.70);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .badge-row {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 13px;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .badge.premium {
+      border-color: rgba(0, 208, 132, 0.35);
+      background: rgba(0, 208, 132, 0.14);
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    /* Runner */
+    .runner { padding: 22px 0 10px; }
+
+    .runner h3 {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .runner-row {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 6px 4px 14px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .runner-row::-webkit-scrollbar { display: none; }
+
+    .shot-card {
+      flex: 0 0 auto;
+      width: 240px;
+      scroll-snap-align: start;
+      display: block;
+      background: rgba(255, 255, 255, 0.06);
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+      text-decoration: none;
+    }
+
+    .shot-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 208, 132, 0.55);
+    }
+
+    .shot-card img {
+      width: 100%;
+      height: 340px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      background: rgba(0, 0, 0, 0.18);
+    }
+
+    .shot-meta { padding: 10px 12px 12px; }
+
+    .shot-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .shot-title {
+      font-weight: 900;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .tag {
+      font-weight: 900;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.78);
+      flex: 0 0 auto;
+    }
+
+    .tag.premium {
+      border-color: rgba(0, 208, 132, 0.35);
+      background: rgba(0, 208, 132, 0.14);
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .shot-desc {
+      margin-top: 6px;
+      color: rgba(255, 255, 255, 0.65);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* Feature sections */
+    .sections { padding: 26px 0 60px; }
+
+    .section {
+      margin-top: 26px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .section-sub {
+      color: rgba(255, 255, 255, 0.65);
+      font-weight: 600;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    /* GRID: LOCK CARD WIDTHS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 260px);
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .grid-card {
+      width: 260px;
+      display: block;
+      background: rgba(255, 255, 255, 0.06);
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .grid-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 208, 132, 0.55);
+    }
+
+    .grid-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      background: rgba(0, 0, 0, 0.18);
+    }
+
+    .grid-meta { padding: 10px 12px 12px; }
+
+    .grid-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .grid-title {
+      font-weight: 900;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .grid-desc {
+      margin-top: 6px;
+      color: rgba(255, 255, 255, 0.65);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.50);
+      border-top: 2px solid rgba(255, 255, 255, 0.12);
+      margin-top: 60px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.70);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255, 255, 255, 0.92); }
+
+    .footer-links .separator { color: rgba(255, 255, 255, 0.30); }
+
+    @media (max-width: 768px) {
+      .page-hero h2 { font-size: 34px; }
+      .page-hero p { font-size: 16px; }
+      .mobile-menu.active { right: 16px; }
+
+      .shot-card img { height: 300px; }
+
+      /* Mobile grid: slightly narrower so it fits cleanly */
+      .grid { grid-template-columns: repeat(auto-fit, 220px); }
+      .grid-card { width: 220px; }
+      .grid-card img { height: 360px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="header-container">
+        <a class="logo-header" href="index.html" aria-label="Go to home">
+          <svg width="48" height="48" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="312" y="248" width="120" height="528" rx="60" fill="#FFFFFF"></rect>
+            <rect x="592" y="248" width="120" height="528" rx="60" fill="#FFFFFF"></rect>
+            <rect x="392" y="462" width="240" height="100" rx="50" fill="#FFFFFF"></rect>
+          </svg>
+          <h1>Huddle</h1>
+        </a>
+
+        <div class="burger-menu" id="burgerMenu" aria-label="Open menu" role="button" tabindex="0">
+          <div class="burger-line"></div>
+          <div class="burger-line"></div>
+          <div class="burger-line"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="faq.html">FAQ</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="https://x.com/GetHuddle" target="_blank" rel="noopener">Follow on 𝕏</a>
+  </div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h2>Features</h2>
+        <p>
+          Huddle keeps your whole group on the same page. Core planning tools are free.
+          Premium adds a couple power features when you need them.
+        </p>
+
+        <div class="badge-row">
+          <span class="badge">Free</span>
+          <span class="badge premium">Premium</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="runner">
+      <div class="container">
+        <h3>Plan it. Split it. Huddle it.</h3>
+
+        <div class="runner-row">
+          <a class="shot-card" href="assets/screenshots/01-huddles.png" target="_blank" rel="noopener">
+            <img src="assets/screenshots/01-huddles.png" alt="Huddle - Huddles" loading="lazy" />
+            <div class="shot-meta">
+              <div class="shot-title-row">
+                <div class="shot-title">Huddles</div>
+                <div class="tag">Free</div>
+              </div>
+              <div class="shot-desc">All your events in one place.</div>
+            </div>
+          </a>
+
+          <a class="shot-card" href="assets/screenshots/02-event.png" target="_blank" rel="noopener">
+            <img src="assets/screenshots/02-event.png" alt="Huddle - Event hub" loading="lazy" />
+            <div class="shot-meta">
+              <div class="shot-title-row">
+                <div class="shot-title">Event hub</div>
+                <div class="tag">Free</div>
+              </div>
+              <div class="shot-desc">One shared space for the whole plan.</div>
+            </div>
+          </a>
+
+          <a class="shot-card" href="assets/screenshots/03-expenses.png" target="_blank" rel="noopener">
+            <img src="assets/screenshots/03-expenses.png" alt="Huddle - Expenses" loading="lazy" />
+            <div class="shot-meta">
+              <div class="shot-title-row">
+                <div class="shot-title">Expenses</div>
+                <div class="tag premium">Premium</div>
+              </div>
+              <div class="shot-desc">Track costs and settle up without drama.</div>
+            </div>
+          </a>
+
+          <a class="shot-card" href="assets/screenshots/19-dish-detail.png" target="_blank" rel="noopener">
+            <img src="assets/screenshots/19-dish-detail.png" alt="Huddle - Dish detail" loading="lazy" />
+            <div class="shot-meta">
+              <div class="shot-title-row">
+                <div class="shot-title">Dish detail</div>
+                <div class="tag">Free</div>
+              </div>
+              <div class="shot-desc">Ingredients, allergens, and who’s bringing it.</div>
+            </div>
+          </a>
+
+          <a class="shot-card" href="assets/screenshots/20-todo.png" target="_blank" rel="noopener">
+            <img src="assets/screenshots/20-todo.png" alt="Huddle - To-dos" loading="lazy" />
+            <div class="shot-meta">
+              <div class="shot-title-row">
+                <div class="shot-title">To-dos</div>
+                <div class="tag">Free</div>
+              </div>
+              <div class="shot-desc">Keep tasks out of the group chat.</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sections">
+      <div class="container">
+
+        <div class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Core planning</div>
+              <div class="section-sub">The essentials that make Huddle useful from day one.</div>
+            </div>
+            <div class="tag">Free</div>
+          </div>
+
+          <div class="grid">
+            <a class="grid-card" href="assets/screenshots/01-huddles.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/01-huddles.png" alt="Huddles" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Huddles</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Your events, organised and easy to access.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/02-event.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/02-event.png" alt="Event hub" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Event hub</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Everything your group needs, in one place.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/29-key-details.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/29-key-details.png" alt="Key Details" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Key Details</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">The quick truth: when, where, budget, plan, theme.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/04-group-tasks.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/04-group-tasks.png" alt="Group tasks" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Group tasks</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Shared responsibilities, without chaos.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/16-activities.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/16-activities.png" alt="Activities" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Activities</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Plan what you’ll do and who’s in.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/17-updates.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/17-updates.png" alt="Updates" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Updates</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Keep everyone aligned with a simple feed.</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Food + coordination</div>
+              <div class="section-sub">Meals, items, and allergies handled properly.</div>
+            </div>
+            <div class="tag">Free</div>
+          </div>
+
+          <div class="grid">
+            <a class="grid-card" href="assets/screenshots/05-menu.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/05-menu.png" alt="Menu" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Menu</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Plan meals together so nothing gets duplicated.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/23-add-dish.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/23-add-dish.png" alt="Add dish" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Add a dish</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Quickly add options for everyone to pick from.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/19-dish-detail.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/19-dish-detail.png" alt="Dish detail" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Dish detail</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Ingredients and allergens, clearly visible.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/09-allergen-warning.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/09-allergen-warning.png" alt="Allergen warning" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Allergen warning</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Built-in heads-up when something clashes.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/10-bring.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/10-bring.png" alt="Bring list" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Bring list</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Track who’s bringing what, so nothing’s missed.</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Decisions</div>
+              <div class="section-sub">Voting that actually gets to a decision.</div>
+            </div>
+            <div class="tag">Free</div>
+          </div>
+
+          <div class="grid">
+            <a class="grid-card" href="assets/screenshots/08-decisions.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/08-decisions.png" alt="Decisions" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Decision list</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">See what needs a vote, fast.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/26-vote.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/26-vote.png" alt="Vote" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Vote</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Make decisions without the group chat spiral.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/27-vote-results.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/27-vote-results.png" alt="Vote results" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Results</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Lock in the plan and move on.</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Get ready</div>
+              <div class="section-sub">Personal to-dos and packing for this event.</div>
+            </div>
+            <div class="tag">Free</div>
+          </div>
+
+          <div class="grid">
+            <a class="grid-card" href="assets/screenshots/11-todo.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/11-todo.png" alt="To-dos" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">To-dos</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Keep track of what you still need to do.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/12-pack.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/12-pack.png" alt="To pack" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">To pack</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Know what’s packed before you leave.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/30-create-task.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/30-create-task.png" alt="Create group task" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Create a group task</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Keep the shared to-do list moving.</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Guests + profiles</div>
+              <div class="section-sub">Get people in, and preferences visible.</div>
+            </div>
+            <div class="tag">Free</div>
+          </div>
+
+          <div class="grid">
+            <a class="grid-card" href="assets/screenshots/07-guests.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/07-guests.png" alt="Guests" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Guests</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Invited vs joined, made obvious.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/06-profile.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/06-profile.png" alt="Profile" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Profile</div>
+                  <div class="tag">Free</div>
+                </div>
+                <div class="grid-desc">Allergies, household, and essentials.</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Premium: Money</div>
+              <div class="section-sub">Track expenses, lock them, and settle up properly.</div>
+            </div>
+            <div class="tag premium">Premium</div>
+          </div>
+
+          <div class="grid">
+            <a class="grid-card" href="assets/screenshots/03-expenses.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/03-expenses.png" alt="Expenses (Premium)" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Expenses</div>
+                  <div class="tag premium">Premium</div>
+                </div>
+                <div class="grid-desc">Receipts, splits, and settlement made simple.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/21-create-expense.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/21-create-expense.png" alt="Create expense" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Create expense</div>
+                  <div class="tag premium">Premium</div>
+                </div>
+                <div class="grid-desc">Capture it while it’s fresh. Add receipts.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/25-settlement.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/25-settlement.png" alt="Settlement" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Settlement</div>
+                  <div class="tag premium">Premium</div>
+                </div>
+                <div class="grid-desc">A clear “who owes who” breakdown.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/24-settlement-breakdown.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/24-settlement-breakdown.png" alt="Settlement breakdown" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Transparency</div>
+                  <div class="tag premium">Premium</div>
+                </div>
+                <div class="grid-desc">Tap to see exactly what made up your share.</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Premium: Communication</div>
+              <div class="section-sub">One shared thread per event.</div>
+            </div>
+            <div class="tag premium">Premium</div>
+          </div>
+
+          <div class="grid">
+            <a class="grid-card" href="assets/screenshots/18-inbox.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/18-inbox.png" alt="Event chat (Premium)" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Event chat</div>
+                  <div class="tag premium">Premium</div>
+                </div>
+                <div class="grid-desc">Keep coordination in one place.</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Premium: Logistics</div>
+              <div class="section-sub">Carpool coordination without back-and-forth.</div>
+            </div>
+            <div class="tag premium">Premium</div>
+          </div>
+
+          <div class="grid">
+            <a class="grid-card" href="assets/screenshots/13-carpool.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/13-carpool.png" alt="Carpool" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Carpool</div>
+                  <div class="tag premium">Premium</div>
+                </div>
+                <div class="grid-desc">Offer rides and coordinate seats.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/22-create-offer.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/22-create-offer.png" alt="Create carpool offer" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Create an offer</div>
+                  <div class="tag premium">Premium</div>
+                </div>
+                <div class="grid-desc">Departure, seats, and details.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/28-request-seat.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/28-request-seat.png" alt="Request seat" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Request a seat</div>
+                  <div class="tag premium">Premium</div>
+                </div>
+                <div class="grid-desc">Pickup requests without a chat spiral.</div>
+              </div>
+            </a>
+
+            <a class="grid-card" href="assets/screenshots/14-carpool-offer.png" target="_blank" rel="noopener">
+              <img src="assets/screenshots/14-carpool-offer.png" alt="Carpool offer" loading="lazy" />
+              <div class="grid-meta">
+                <div class="grid-title-row">
+                  <div class="grid-title">Offer details</div>
+                  <div class="tag premium">Premium</div>
+                </div>
+                <div class="grid-desc">See who’s driving, when, and where.</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://x.com/GetHuddle" target="_blank" rel="noopener">Follow on 𝕏</a>
+        <span class="separator">|</span>
+        <a href="faq.html">FAQ</a>
+        <span class="separator">|</span>
+        <a href="terms.html">Terms of Service</a>
+        <span class="separator">|</span>
+        <a href="privacy.html">Privacy Policy</a>
+        <span class="separator">|</span>
+        <a href="contact.html">Contact Us</a>
+      </div>
+
+      <p>© 2026 Huddle. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const burgerMenu = document.getElementById("burgerMenu");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    const toggleMenu = () => {
+      burgerMenu.classList.toggle("active");
+      mobileMenu.classList.toggle("active");
+    };
+
+    burgerMenu.addEventListener("click", toggleMenu);
+
+    burgerMenu.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!burgerMenu.contains(e.target) && !mobileMenu.contains(e.target)) {
+        burgerMenu.classList.remove("active");
+        mobileMenu.classList.remove("active");
+      }
+    });
+  </script>
+</body>
+</html>
