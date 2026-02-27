@@ -4,10 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Huddle - Organize Group Events Without the Chaos</title>
-
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: linear-gradient(180deg, #1A0B2E 0%, #231044 100%);
@@ -15,13 +13,11 @@
       min-height: 100vh;
       line-height: 1.6;
     }
-
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
     }
-
     /* Header */
     header {
       position: sticky;
@@ -32,30 +28,25 @@
       border-bottom: 2px solid rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(10px);
     }
-
     .header-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
     .logo-header {
       display: flex;
       align-items: center;
       gap: 12px;
     }
-
     .logo-header svg {
       width: 48px;
       height: 48px;
     }
-
     .logo-header h1 {
       font-size: 28px;
       font-weight: 900;
       color: rgba(255, 255, 255, 0.92);
     }
-
     /* Burger Menu */
     .burger-menu {
       cursor: pointer;
@@ -67,9 +58,7 @@
       border-radius: 8px;
       transition: background 0.2s;
     }
-
     .burger-menu:hover { background: rgba(255, 255, 255, 0.15); }
-
     .burger-line {
       width: 24px;
       height: 3px;
@@ -77,17 +66,13 @@
       border-radius: 2px;
       transition: all 0.3s;
     }
-
     .burger-menu.active .burger-line:nth-child(1) {
       transform: rotate(45deg) translate(6px, 6px);
     }
-
     .burger-menu.active .burger-line:nth-child(2) { opacity: 0; }
-
     .burger-menu.active .burger-line:nth-child(3) {
       transform: rotate(-45deg) translate(6px, -6px);
     }
-
     /* Mobile Menu */
     .mobile-menu {
       position: fixed;
@@ -101,9 +86,7 @@
       transition: right 0.3s ease;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     }
-
     .mobile-menu.active { right: 24px; }
-
     .mobile-menu a {
       display: block;
       padding: 16px;
@@ -113,24 +96,19 @@
       border-radius: 8px;
       transition: background 0.2s;
     }
-
     .mobile-menu a:hover { background: rgba(255, 255, 255, 0.1); }
-
     /* Hero */
     .hero {
       padding: 80px 0;
       text-align: center;
     }
-
     .hero-logo { margin: 0 auto 32px; }
-
     .hero h2 {
       font-size: 48px;
       font-weight: 900;
       margin-bottom: 16px;
       line-height: 1.2;
     }
-
     .hero p {
       font-size: 20px;
       color: rgba(255, 255, 255, 0.70);
@@ -139,7 +117,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-
     .cta-button {
       background: #00D084;
       color: #1A0B2E;
@@ -152,60 +129,50 @@
       border: 2px solid #00D084;
       transition: all 0.2s;
     }
-
     .cta-button:hover {
       background: #00E091;
       transform: translateY(-2px);
     }
-
     /* Features */
     .features { padding: 60px 0; }
-
     .features h3 {
       text-align: center;
       font-size: 36px;
       font-weight: 900;
       margin-bottom: 48px;
     }
-
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 32px;
     }
-
     .feature-card {
       background: rgba(255, 255, 255, 0.08);
       border: 2px solid rgba(255, 255, 255, 0.12);
       border-radius: 16px;
       padding: 32px;
     }
-
     .feature-card h4 {
       font-size: 22px;
       font-weight: 900;
       margin-bottom: 12px;
       color: #00D084;
     }
-
     .feature-card p {
       color: rgba(255, 255, 255, 0.70);
       font-size: 16px;
     }
-
     /* Screenshots */
     .screenshots {
       padding: 80px 0;
       background: rgba(0, 0, 0, 0.20);
     }
-
     .screenshots h3 {
       text-align: center;
       font-size: 36px;
       font-weight: 900;
       margin-bottom: 32px;
     }
-
     .screenshot-gallery {
       display: flex;
       flex-wrap: nowrap;
@@ -216,9 +183,7 @@
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none; /* Firefox */
     }
-
     .screenshot-gallery::-webkit-scrollbar { display: none; /* Chrome/Safari/Edge */ }
-
     .screenshot-card {
       flex: 0 0 auto;
       width: 240px;
@@ -231,12 +196,10 @@
       transition: transform 0.15s ease, border-color 0.15s ease;
       text-decoration: none;
     }
-
     .screenshot-card:hover {
       transform: translateY(-2px);
       border-color: rgba(0, 208, 132, 0.55);
     }
-
     /* Size lock + no cropping */
     .screenshot-card img {
       width: 100%;
@@ -246,15 +209,12 @@
       display: block;
       background: rgba(0, 0, 0, 0.18);
     }
-
     .shot-meta { padding: 10px 12px 12px; }
-
     .shot-title {
       font-weight: 900;
       font-size: 14px;
       color: rgba(255, 255, 255, 0.92);
     }
-
     .shot-desc {
       margin-top: 6px;
       color: rgba(255, 255, 255, 0.65);
@@ -262,7 +222,6 @@
       font-size: 13px;
       line-height: 1.35;
     }
-
     .screenshots-note {
       margin-top: 18px;
       text-align: center;
@@ -270,21 +229,16 @@
       font-weight: 600;
       font-size: 14px;
     }
-
     .screenshots-link { margin-top: 14px; text-align: center; }
-
     .screenshots-link a {
       color: rgba(255, 255, 255, 0.80);
       font-weight: 800;
       text-decoration: underline;
       text-underline-offset: 4px;
     }
-
     .screenshots-link a:hover { color: rgba(255, 255, 255, 0.92); }
-
     /* Signup */
     .signup { padding: 80px 0; }
-
     .signup-container {
       max-width: 500px;
       margin: 0 auto;
@@ -293,29 +247,24 @@
       border-radius: 16px;
       padding: 40px;
     }
-
     .signup h3 {
       font-size: 32px;
       font-weight: 900;
       margin-bottom: 16px;
       text-align: center;
     }
-
     .signup p {
       text-align: center;
       color: rgba(255, 255, 255, 0.70);
       margin-bottom: 32px;
     }
-
     .form-group { margin-bottom: 20px; }
-
     .form-group label {
       display: block;
       font-weight: 700;
       margin-bottom: 8px;
       font-size: 14px;
     }
-
     .form-group input {
       width: 100%;
       padding: 14px;
@@ -326,14 +275,11 @@
       font-size: 16px;
       font-weight: 600;
     }
-
     .form-group input::placeholder { color: rgba(255, 255, 255, 0.40); }
-
     .form-group input:focus {
       outline: none;
       border-color: #00D084;
     }
-
     .submit-button {
       width: 100%;
       background: #00D084;
@@ -346,17 +292,14 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-
     .submit-button:hover {
       background: #00E091;
       transform: translateY(-2px);
     }
-
     .submit-button:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
-
     .success-message {
       display: none;
       text-align: center;
@@ -367,9 +310,7 @@
       margin-top: 16px;
       font-weight: 700;
     }
-
     .success-message.show { display: block; }
-
     /* Footer */
     footer {
       padding: 40px 0;
@@ -378,7 +319,6 @@
       border-top: 2px solid rgba(255, 255, 255, 0.12);
       margin-top: 60px;
     }
-
     .footer-links {
       display: flex;
       gap: 16px;
@@ -387,30 +327,24 @@
       flex-wrap: wrap;
       margin-bottom: 20px;
     }
-
     .footer-links a {
       color: rgba(255, 255, 255, 0.70);
       text-decoration: none;
       font-weight: 600;
       transition: color 0.2s;
     }
-
     .footer-links a:hover { color: rgba(255, 255, 255, 0.92); }
-
     .footer-links .separator { color: rgba(255, 255, 255, 0.30); }
-
     @media (max-width: 768px) {
       .hero h2 { font-size: 36px; }
       .hero p { font-size: 18px; }
       .features h3, .screenshots h3 { font-size: 28px; }
       .signup-container { padding: 32px 24px; }
       .mobile-menu.active { right: 16px; }
-
       .screenshot-card img { height: 300px; }
     }
   </style>
 </head>
-
 <body>
   <header>
     <div class="container">
@@ -423,7 +357,6 @@
           </svg>
           <h1>Huddle</h1>
         </div>
-
         <div class="burger-menu" id="burgerMenu" aria-label="Open menu" role="button" tabindex="0">
           <div class="burger-line"></div>
           <div class="burger-line"></div>
@@ -458,7 +391,6 @@
           <rect x="592" y="248" width="120" height="528" rx="60" fill="#FFFFFF"></rect>
           <rect x="392" y="462" width="240" height="100" rx="50" fill="#FFFFFF"></rect>
         </svg>
-
         <h2>Organize Group Events<br />Without the Chaos</h2>
         <p>Split expenses, make decisions, and coordinate schedules—all in one place. No more endless group chats.</p>
         <a href="#signup" class="cta-button">Join the Waitlist</a>
@@ -468,23 +400,19 @@
     <section class="features">
       <div class="container">
         <h3>Everything Your Group Needs</h3>
-
         <div class="feature-grid">
           <div class="feature-card">
             <h4>📌 Key details</h4>
             <p>Keep the essentials visible: when, where, budget, plan, and theme. No more “what’s the plan again?”</p>
           </div>
-
           <div class="feature-card">
             <h4>🗳️ Decisions</h4>
             <p>Vote on dates, activities, and options in-app so your group can actually decide and move on.</p>
           </div>
-
           <div class="feature-card">
             <h4>🍽️ Food + bring lists</h4>
             <p>Plan meals, avoid duplicates, and make allergies obvious. Coordinate who’s bringing what.</p>
           </div>
-
           <div class="feature-card">
             <h4>✅ Tasks + packing</h4>
             <p>Group to-dos for shared responsibilities, plus personal packing so people show up ready.</p>
@@ -496,7 +424,6 @@
     <section class="screenshots">
       <div class="container">
         <h3>See It In Action</h3>
-
         <div class="screenshot-gallery">
           <a class="screenshot-card" href="assets/screenshots/01-huddles.png" target="_blank" rel="noopener">
             <img src="assets/screenshots/01-huddles.png" alt="Huddle - Huddles screen" loading="lazy" />
@@ -505,7 +432,6 @@
               <div class="shot-desc">All your events in one place.</div>
             </div>
           </a>
-
           <a class="screenshot-card" href="assets/screenshots/02-event.png" target="_blank" rel="noopener">
             <img src="assets/screenshots/02-event.png" alt="Huddle - Event screen" loading="lazy" />
             <div class="shot-meta">
@@ -513,7 +439,6 @@
               <div class="shot-desc">Everything for this event in one shared space.</div>
             </div>
           </a>
-
           <a class="screenshot-card" href="assets/screenshots/29-key-details.png" target="_blank" rel="noopener">
             <img src="assets/screenshots/29-key-details.png" alt="Huddle - Key Details screen" loading="lazy" />
             <div class="shot-meta">
@@ -521,7 +446,6 @@
               <div class="shot-desc">When, where, budget, plan, theme — made obvious.</div>
             </div>
           </a>
-
           <a class="screenshot-card" href="assets/screenshots/26-vote.png" target="_blank" rel="noopener">
             <img src="assets/screenshots/26-vote.png" alt="Huddle - Vote screen" loading="lazy" />
             <div class="shot-meta">
@@ -529,7 +453,6 @@
               <div class="shot-desc">Make decisions without the group chat spiral.</div>
             </div>
           </a>
-
           <a class="screenshot-card" href="assets/screenshots/25-settlement.png" target="_blank" rel="noopener">
             <img src="assets/screenshots/25-settlement.png" alt="Huddle - Settlement screen" loading="lazy" />
             <div class="shot-meta">
@@ -540,6 +463,7 @@
         </div>
 
         <div class="screenshots-note">Tap any screenshot to view it full size.</div>
+        <div class="screenshots-note">Screenshots are for illustration. Some screens may look slightly different in the live app as we continue building and improving Huddle.</div>
 
         <div class="screenshots-link">
           <a href="features.html">Explore all features →</a>
@@ -552,26 +476,21 @@
         <div class="signup-container">
           <h3>Join the Beta Waitlist</h3>
           <p>Be among the first to try Huddle when we launch.</p>
-
           <form id="waitlist-form" action="https://formspree.io/f/xwvqeele" method="POST">
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" placeholder="Your name" required />
             </div>
-
             <div class="form-group">
               <label for="email">Email</label>
               <input type="email" id="email" name="email" placeholder="your@email.com" required />
             </div>
-
             <div class="form-group">
               <label for="phone">Phone Number</label>
               <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" required />
             </div>
-
             <button type="submit" class="submit-button">Join Waitlist</button>
           </form>
-
           <div class="success-message" id="success-message">✓ You're on the list! We'll be in touch soon.</div>
         </div>
       </div>
@@ -591,7 +510,6 @@
         <span class="separator">|</span>
         <a href="contact.html">Contact Us</a>
       </div>
-
       <p>© 2026 Huddle. All rights reserved.</p>
     </div>
   </footer>
@@ -607,7 +525,6 @@
     };
 
     burgerMenu.addEventListener("click", toggleMenu);
-
     burgerMenu.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
